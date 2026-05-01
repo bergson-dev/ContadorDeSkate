@@ -9,7 +9,7 @@ struct ContentView: View {
     //Variavel que o swift "vigia". Se ela mudar, a tela muda!
     @State var manobras = 0
     @State var valorDoAluguel: Double = 1200.00
-    @State var diasDeAtraso: Int = 5
+    @State var diasDeAtraso: Int = 20
     @State var estaPago: Bool = false
     @State var taxaMulta: Double = 50.0
     
@@ -17,7 +17,11 @@ struct ContentView: View {
         if estaPago {
             return valorDoAluguel
         } else {
-            return valorDoAluguel + taxaMulta
+            if diasDeAtraso > 10 {
+                return valorDoAluguel + (taxaMulta * 2)
+            } else {
+                return valorDoAluguel + taxaMulta
+            }
         }
     }
         var body: some View { //Alinha tudo em cima do outro
