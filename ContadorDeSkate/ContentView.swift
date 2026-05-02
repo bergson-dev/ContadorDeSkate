@@ -9,9 +9,11 @@ struct ContentView: View {
     //Variavel que o swift "vigia". Se ela mudar, a tela muda!
     @State var manobras = 0
     @State var valorDoAluguel: Double = 1200.00
-    @State var diasDeAtraso: Int = 20
+    @State var diasDeAtraso: Int = 15
     @State var estaPago: Bool = false
     @State var taxaMulta: Double = 50.0
+    @State var clima = false
+    @State var pistaMolhada = true
     
     func calcularTotal() -> Double {
         if estaPago {
@@ -27,6 +29,15 @@ struct ContentView: View {
         var body: some View { //Alinha tudo em cima do outro
             
             VStack(spacing: 20) {
+                
+                if clima && pistaMolhada {
+                    Text("Hoje tem skate")
+                }else if clima && !pistaMolhada {
+                    Text("Esperar secar")
+                }else{
+                    Text("Ficar em casa")
+                }
+                
                 Text("Treino de Hoje")
                     .font(.title)
                     .fontWeight(.bold)
